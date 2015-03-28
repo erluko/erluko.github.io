@@ -1,3 +1,6 @@
+---
+title: Pasting Service For VirtualBox
+---
 
 Pasting In VirtualBox
 ---------------------
