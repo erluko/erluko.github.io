@@ -1,6 +1,7 @@
 ---
 title: Pasting Service For VirtualBox
 ---
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 
 Pasting In VirtualBox
 ---------------------
@@ -31,16 +32,16 @@ The service should receive no input.
 The first action should be "Get Clipboard Contents"
 
 The second action should be "Run AppleScript" with the following code:
-```
+
+{% highlight applescript %}
 on run {input, parameters}
-	set tinput to input as text
-	repeat with thisCharacter in the characters of tinput
-		set thisCharacter to thisCharacter as text
-		tell application "System Events" to keystroke thisCharacter
-	end repeat
-	return input
+    set input to input as text
+    repeat with thisCharacter in the characters of input
+        tell application "System Events" to keystroke thisCharacter
+    end repeat
+    return input
 end run
-```
+{% endhighlight %}
 
 Save the workflow as 'TypeClipboardContents'
 
