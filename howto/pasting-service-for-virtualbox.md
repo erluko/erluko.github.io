@@ -4,7 +4,7 @@ title: Pasting Service For VirtualBox
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 
 Pasting In VirtualBox
----------------------
+=====================
 
 Have you ever found yourself trying to paste a value into a VirtualBox
 instance that's not running an OS with clipboard integration?
@@ -23,7 +23,7 @@ Here's one way to do it under OS X without messing about with KeyCode
 generation and a running terminal.
 
 Create a Paste Service
-======================
+----------------------
 
 In Automator, create a new Service.
 
@@ -46,8 +46,10 @@ end run
 Save the workflow as 'TypeClipboardContents'
 
 
+![This is what TypeClipboardContents.workflow looks like in Automator](images/type-clipboard-contents-workflow.png "Automator Workflow Screenshot")
+
 Test The Service
-================
+----------------
 
 1. Copy some text.
 2. Open an application that allows text insertion.
@@ -55,7 +57,7 @@ Test The Service
 
 
 Keyboard Shortcut for VirtualBox
-================================
+--------------------------------
 
 Assuming the above steps worked for you, you can avoid having to use
 the mouse by adding a keyboard shortcut for your service. I wanted to
@@ -72,9 +74,10 @@ use `⌘-V` as the shortcut, but only in VirtualBox.
 7. Set Menu Title to 'TypeClipboardContents'
 8. Set Keyboard Shortcut to `⌘-V`
 
+![Establishing the keyboard shortcut](images/type-clipboard-contents-shortcut.png "Shortcut Configuration Screenshot")
 
 Test The Shortcut
-=================
+-----------------
 
 1. Copy some text to the clipboard
 2. Switch to the running VM of your choice
