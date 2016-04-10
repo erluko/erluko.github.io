@@ -33,7 +33,8 @@ The first action should be "Get Clipboard Contents"
 
 The second action should be "Run AppleScript" with the following code:
 
-``` applescript
+{% highlight applescript %}
+{% raw %}
 on run {input, parameters}
     set input to input as text
     tell application "System Events"
@@ -59,7 +60,8 @@ on run {input, parameters}
     end tell
     return input
 end run
-```
+{% endraw %}
+{% endhighlight %}
 
 Save the workflow as 'TypeClipboardContents'
 
