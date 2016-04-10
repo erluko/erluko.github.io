@@ -36,9 +36,27 @@ The second action should be "Run AppleScript" with the following code:
 {% highlight applescript %}
 on run {input, parameters}
     set input to input as text
-    repeat with thisCharacter in the characters of input
-        tell application "System Events" to keystroke thisCharacter
-    end repeat
+    tell application "System Events"
+        repeat with currentChar in the characters of input
+            set cID to id of currentChar
+            set used to false
+            repeat with r in {{48, 29}, {49, 18}, {50, 19}, {51, 20}, {52, 21}, {53, 23}, {54, 22}, {55, 26}, {56, 28}, {57, 25}, {45, 27}, {46, 47}, {47, 44}, {61, 24}}
+                if first item of r is equal to cID then -- 0-9 -./=
+                    key code (second item of r)
+                    set used to true
+                end if
+            end repeat
+            repeat with r in {{42, 28}, {43, 24}} -- *+
+                if first item of r is equal to cID then
+                    key code (second item of r) using shift down
+                    set used to true
+                end if
+            end repeat
+            if not used then
+                keystroke currentChar
+            end if
+        end repeat
+    end tell
     return input
 end run
 {% endhighlight %}
@@ -84,3 +102,15 @@ Test The Shortcut
 3. Type `⌘-V`
 
 If it worked, great. If not, retrace your steps and try again!
+
+Notes
+-----
+
+I revised the script on April 9th, 2016 to resolve an issue with
+pasting of numbers and some
+punctuation. [This post on Stack Overflow](http://apple.stackexchange.com/questions/142986/applescript-keystroke-ignoring-numbers)
+was helpful in understanding why my earlier version of the service
+failed to insert characters which might have been found on the numeric
+keypad. The newer version of the script handles these troublesome
+characters with manually chosen key codes from
+`HIToolbox.framework/Versions/A/Headers/Events.h`
