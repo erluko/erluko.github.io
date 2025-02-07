@@ -41,7 +41,7 @@ on run {input, parameters}
         repeat with currentChar in the characters of input
             set cID to id of currentChar
             set used to false
-            repeat with r in {{48, 29}, {49, 18}, {50, 19}, {51, 20}, {52, 21}, {53, 23}, {54, 22}, {55, 26}, {56, 28}, {57, 25}, {45, 27}, {46, 47}, {47, 44}, {61, 24}}
+            repeat with r in {{48, 29}, {49, 18}, {50, 19}, {51, 20}, {52, 21}, {53, 23}, {54, 22}, {55, 26}, {56, 28}, {57, 25}, {45, 27}, {46, 47}, {47, 44}, {61, 24}, {10,36}, {9,4}}
                 if first item of r is equal to cID then -- 0-9 -./=
                     key code (second item of r)
                     set used to true
